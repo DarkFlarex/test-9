@@ -36,14 +36,20 @@ const Transaction = () => {
     const total=transactions.reduce((sum,ApiTransaction)=> {
         return sum  + ApiTransaction.amount;
     },0);
+
+    const totalClass = total >= 0 ? 'text-success' : 'text-danger';
+    const sortedTransactions =
+        [...transactions].sort((a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
     return (
         <>
             <h4>Transaction</h4>
-            <h4>Total: {total}</h4>
+            <h4>Total: <strong className={totalClass}>{total} KGS</strong></h4>
             {transactionsLoading ? (
                 <Spinner />
             ) : (
-                transactions.map((transaction) => (
+                sortedTransactions.map((transaction) => (
                     <TransactionItem
                         key={transaction.id}
                         transaction={transaction}

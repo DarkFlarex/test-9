@@ -13,6 +13,9 @@ interface Props {
 
 const TransactionItem: React.FC<Props> = ({ transaction, onDelete, deleteLoading,Sign }) => {
 
+    const amountClass = transaction.amount >= 0 ? 'text-success' : 'text-danger';
+
+
     return (
         <div className="card mb-2">
             <div className="row g-0">
@@ -20,7 +23,7 @@ const TransactionItem: React.FC<Props> = ({ transaction, onDelete, deleteLoading
                     <span>{dayjs(transaction.createdAt).format('DD.MM.YYYY HH:mm:ss')}</span>
                     <h5 className="card-title">{transaction.type}</h5>
                     <span className="card-text small">{transaction.category}</span>
-                    <span className="card-text">
+                    <span className={amountClass}>
                        {Sign} {transaction.amount} KGS
                     </span>
                     <div className="d-flex gap-2">
