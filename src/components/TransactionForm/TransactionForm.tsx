@@ -67,9 +67,9 @@ const TransactionForm: React.FC<Props> = ({ onSubmit, existingTransaction, isLoa
                     onChange={onFieldChange}
                 >
                     <option value="">Select type</option>
-                    {TransactionView.map((category) => (
-                        <option key={category.id} value={category.id}>
-                            {category.title}
+                    {TransactionView.map((transaction) => (
+                        <option key={transaction.id} value={transaction.id}>
+                            {transaction.title}
                         </option>
                     ))}
                 </select>

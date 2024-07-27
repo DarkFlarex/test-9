@@ -22,7 +22,7 @@ export interface TransactionMutation {
 export interface Category {
     id: string;
     type: string;
-    category: string;
+    name: string;
 }
 
 export type ApiCategory = Omit<Category, 'id'>;
@@ -33,5 +33,5 @@ export interface ApiCategories {
 
 export interface CategoryMutation {
     type: string;
-    category: string;
+    name: string;
 }

@@ -1,6 +1,6 @@
 import {Category} from "../types";
 import {createSlice} from "@reduxjs/toolkit";
-import {createCategories} from "./categoriesThunk";
+import {createCategory} from "./categoriesThunk";
 
 
 export interface CategoriesState{
@@ -19,13 +19,13 @@ export const categoriesSlice = createSlice({
     reducers:{},
     extraReducers:builder => {
         builder
-            .addCase(createCategories.pending, (state) => {
+            .addCase(createCategory.pending, (state) => {
                 state.createCategoriesLoading = true;
             })
-            .addCase(createCategories.fulfilled, (state) => {
+            .addCase(createCategory.fulfilled, (state) => {
                 state.createCategoriesLoading = false;
             })
-            .addCase(createCategories.rejected, (state) => {
+            .addCase(createCategory.rejected, (state) => {
                 state.createCategoriesLoading = false;
             });
         },
