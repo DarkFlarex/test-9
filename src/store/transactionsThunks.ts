@@ -7,43 +7,43 @@ export const fetchTransactions = createAsyncThunk<
     Transaction[],
     undefined,
     { dispatch: AppDispatch }
->('transaction/fetchTransaction', async () => {
-    const dishesResponse = await axiosApi.get<ApiTransactions | null>('/transaction.json');
-    const transactions = dishesResponse.data;
+>('transactions/fetchTransactions', async () => {
+    const transactionsResponse = await axiosApi.get<ApiTransactions | null>('/transactions.json');
+    const transactions = transactionsResponse.data;
 
-    let newTransaction: Transaction[] = [];
+    let newTransactions: Transaction[] = [];
 
     if (transactions) {
-        newTransaction = Object.keys(transactions).map((key: string) => {
-            const dish = transactions[key];
+        newTransactions = Object.keys(transactions).map((key: string) => {
+            const transaction = transactions[key];
             return {
                 id: key,
-                ...dish,
+                ...transaction,
             };
         });
     }
-    return newTransaction;
+    return newTransactions;
 });
 
 export const deleteTransaction = createAsyncThunk<void, string, { state: RootState }>(
-    'transaction/deleteTransaction',
+    'transactions/deleteTransaction',
     async (transactionId) => {
-        await axiosApi.delete('/transaction/' + transactionId + '.json');
+        await axiosApi.delete('/transactions/' + transactionId + '.json');
     },
 );
 
 export const createTransaction = createAsyncThunk<void, ApiTransaction, { state: RootState }>(
-    'transaction/create',
+    'transactions/create',
     async (apiTransaction) => {
-        await axiosApi.post('/transaction.json', apiTransaction);
+        await axiosApi.post('/transactions.json', apiTransaction);
     },
 );
 
 export const fetchOneTransaction = createAsyncThunk<ApiTransaction, string, { state: RootState }>(
-    'transaction/fetchOne',
+    'transactions/fetchOne',
     async (id) => {
         const { data: transaction } = await axiosApi.get<ApiTransaction | null>(
-            `/transaction/${id}.json`,
+            `/transactions/${id}.json`,
         );
 
         if (transaction === null) {
@@ -60,8 +60,8 @@ export interface UpdateTransactionArg {
 }
 
 export const updateTransaction = createAsyncThunk<void, UpdateTransactionArg, { state: RootState }>(
-    'transaction/update',
+    'transactions/update',
     async ({ id, apiTransaction }) => {
-        await axiosApi.put(`/transaction/${id}.json`, apiTransaction);
+        await axiosApi.put(`/transactions/${id}.json`, apiTransaction);
     },
 );

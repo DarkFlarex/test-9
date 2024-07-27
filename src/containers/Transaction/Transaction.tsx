@@ -6,7 +6,7 @@ import {
     selectTransactions
 } from "../../store/transactionsSlice";
 import Spinner from "../../components/Spinner/Spinner";
-import TransactionItem from "../../components/Transaction/TransactionItem";
+import TransactionItem from "../../components/TransactionItem/TransactionItem";
 import {deleteTransaction, fetchTransactions} from "../../store/transactionsThunks";
 import {toast} from "react-toastify";
 
