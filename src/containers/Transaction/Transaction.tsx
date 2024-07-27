@@ -49,6 +49,7 @@ const Transaction = () => {
                         transaction={transaction}
                         onDelete={() => removeTransaction(transaction.id)}
                         deleteLoading={deleteTransactionLoading}
+                        Sign={transaction.type === 'income' ? '+' : '-'}
                     />
                 ))
             )}

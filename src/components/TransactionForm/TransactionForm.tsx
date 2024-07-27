@@ -24,6 +24,7 @@ const TransactionView = [
 const CategoryView = [
     { title: 'Salary', id: 'salary' },
     { title: 'Food', id: 'food' },
+    { title: 'Drink', id: 'drink' },
 ];
 
 const TransactionForm: React.FC<Props> = ({ onSubmit, existingTransaction, isLoading }) => {
