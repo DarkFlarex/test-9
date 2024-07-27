@@ -27,8 +27,10 @@ const NameView = [
 ];
 
 const CategoryForm: React.FC<Props> = ({ onSubmit, existingCategory, isLoading }) => {
+    const initialState: CategoryMutation = existingCategory
+        ? { ...existingCategory} : emptyState;
 
-    const [categoryMutation, setCategoryMutation] = useState<CategoryMutation>(emptyState);
+    const [categoryMutation, setCategoryMutation] = useState<CategoryMutation>(initialState);
 
     const onFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setCategoryMutation((prev) => ({

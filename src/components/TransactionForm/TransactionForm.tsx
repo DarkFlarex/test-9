@@ -7,7 +7,6 @@ interface Props {
     onSubmit: (transaction: ApiTransaction) => void;
     existingTransaction?: ApiTransaction;
     isLoading?: boolean;
-
 }
 
 const emptyState: TransactionMutation = {

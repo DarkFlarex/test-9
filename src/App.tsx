@@ -7,6 +7,7 @@ import Transaction from "./containers/Transaction/Transaction";
 import EditTransaction from "./containers/EditTransaction/EditTransaction";
 import Categories from "./containers/Categories/Categories";
 import NewCategory from "./containers/NewCategory/NewCategory";
+import EditCategory from "./containers/EditCategory/EditCategory";
 
 const App=() =>{
 
@@ -26,6 +27,7 @@ const App=() =>{
                   <Route path="/edit-transaction/:id" element={<EditTransaction/>} />
                   <Route path="/categories" element={<Categories/>} />
                   <Route path="/new-categories" element={<NewCategory/>}/>
+                  <Route path="/edit-category/:id" element={<EditCategory/>}/>
                   <Route path="*" element={<h1>Not found!</h1>} />
               </Routes>
           </main>

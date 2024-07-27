@@ -3,8 +3,6 @@ import {ApiCategories, ApiCategory, Category} from "../types";
 import {AppDispatch, RootState} from "../app/store";
 import axiosApi from "../axiosApi";
 
-
-
 export const fetchCategories = createAsyncThunk<
     Category[],
     undefined,

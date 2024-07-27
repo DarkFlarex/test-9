@@ -9,7 +9,7 @@ export interface CategoriesState{
     deleteLoading: false | string;
     updateLoading: boolean;
     fetchOneLoading: boolean;
-    oneTransaction: null | ApiCategory;
+    oneCategory: null | ApiCategory;
 }
 
 const initialState: CategoriesState = {
@@ -19,7 +19,7 @@ const initialState: CategoriesState = {
     deleteLoading: false ,
     updateLoading: false,
     fetchOneLoading: false,
-    oneTransaction: null ,
+    oneCategory: null ,
 };
 
 export const categoriesSlice = createSlice({
@@ -63,11 +63,11 @@ export const categoriesSlice = createSlice({
 
         builder
             .addCase(fetchOneCategory.pending, (state) => {
-                state.oneTransaction = null;
+                state.oneCategory = null;
                 state.fetchOneLoading = true;
             })
             .addCase(fetchOneCategory.fulfilled, (state, { payload: apiCategory }) => {
-                state.oneTransaction = apiCategory;
+                state.oneCategory = apiCategory;
                 state.fetchOneLoading = false;
             })
             .addCase(fetchOneCategory.rejected, (state) => {
@@ -91,7 +91,7 @@ export const categoriesSlice = createSlice({
         selectCreateCategoryLoading: (state) => state.createCategoriesLoading,
         selectFetchOneCategoryLoading: (state) => state.fetchOneLoading,
         selectUpdateCategoryLoading: (state) => state.updateLoading,
-        selectOneCategory: (state) => state.oneTransaction,
+        selectOneCategory: (state) => state.oneCategory,
     },
 });
 
