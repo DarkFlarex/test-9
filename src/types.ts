@@ -18,3 +18,20 @@ export interface TransactionMutation {
     amount: string;
     createdAt: string;
 }
+
+export interface Category {
+    id: string;
+    type: string;
+    category: string;
+}
+
+export type ApiCategory = Omit<Category, 'id'>;
+
+export interface ApiCategories {
+    [id: string]: ApiCategory;
+}
+
+export interface CategoryMutation {
+    type: string;
+    category: string;
+}

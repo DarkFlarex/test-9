@@ -8,7 +8,7 @@ import {
     updateTransaction
 } from "./transactionsThunks";
 
-export interface DishesState {
+export interface TransactionState {
     items:Transaction[];
     fetchLoading: boolean;
     createLoading: boolean;
@@ -18,7 +18,7 @@ export interface DishesState {
     oneTransaction: null | ApiTransaction;
 }
 
-const initialState: DishesState = {
+const initialState: TransactionState = {
     items:[],
     fetchLoading: false,
     createLoading: false,
