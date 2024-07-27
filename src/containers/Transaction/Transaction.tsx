@@ -33,9 +33,13 @@ const Transaction = () => {
         dispatch(fetchTransactions());
     }, [dispatch]);
 
+    const total=transactions.reduce((sum,ApiTransaction)=> {
+        return sum  + ApiTransaction.amount;
+    },0);
     return (
         <>
             <h4>Transaction</h4>
+            <h4>Total: {total}</h4>
             {transactionsLoading ? (
                 <Spinner />
             ) : (
