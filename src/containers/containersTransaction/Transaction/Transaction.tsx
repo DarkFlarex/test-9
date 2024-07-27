@@ -49,7 +49,7 @@ const Transaction = () => {
             <h4>Total: <strong className={totalClass}>{total} KGS</strong></h4>
             {transactionsLoading ? (
                 <Spinner />
-            ) : (
+            ) : sortedTransactions.length > 0 ? (
                 sortedTransactions.map((transaction) => (
                     <TransactionItem
                         key={transaction.id}
@@ -59,6 +59,8 @@ const Transaction = () => {
                         Sign={transaction.type === 'income' ? '+' : '-'}
                     />
                 ))
+            ) : (
+                <h5>Транзакции пусты, заполните их</h5>
             )}
         </>
     );
