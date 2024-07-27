@@ -1,16 +1,16 @@
 import {useEffect} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {
     selectFetchOneTransactionLoading,
     selectOneTransaction,
     selectUpdateTransactionLoading
-} from "../../store/transactionsSlice";
-import {ApiTransaction} from "../../types";
-import {fetchOneTransaction, updateTransaction} from "../../store/transactionsThunks";
+} from "../../../store/transactionsSlice";
+import {ApiTransaction} from "../../../types";
+import {fetchOneTransaction, updateTransaction} from "../../../store/transactionsThunks";
 import {toast} from "react-toastify";
-import Spinner from "../../components/Spinner/Spinner";
-import TransactionForm from "../../components/TransactionForm/TransactionForm";
+import Spinner from "../../../components/Spinner/Spinner";
+import TransactionForm from "../../../components/componentsTransaction/TransactionForm/TransactionForm";
 
 const EditTransaction = () => {
     const navigate = useNavigate();

@@ -2,12 +2,12 @@
 import './App.css'
 import Toolbar from "./components/Toolbar/Toolbar";
 import {Route, Routes} from "react-router-dom";
-import NewTransaction from "./containers/NewTransaction/NewTransaction";
-import Transaction from "./containers/Transaction/Transaction";
-import EditTransaction from "./containers/EditTransaction/EditTransaction";
-import Categories from "./containers/Categories/Categories";
-import NewCategory from "./containers/NewCategory/NewCategory";
-import EditCategory from "./containers/EditCategory/EditCategory";
+import NewTransaction from "./containers/containersTransaction/NewTransaction/NewTransaction";
+import Transaction from "./containers/containersTransaction/Transaction/Transaction";
+import EditTransaction from "./containers/containersTransaction/EditTransaction/EditTransaction";
+import Categories from "./containers/containersCategories/Categories/Categories";
+import NewCategory from "./containers/containersCategories/NewCategory/NewCategory";
+import EditCategory from "./containers/containersCategories/EditCategory/EditCategory";
 
 const App=() =>{
 

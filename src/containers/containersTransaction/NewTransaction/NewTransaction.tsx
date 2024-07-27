@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import { selectCreateTransactionLoading } from '../../store/transactionsSlice';
-import { ApiTransaction } from '../../types';
-import { createTransaction } from '../../store/transactionsThunks';
+import {useAppDispatch, useAppSelector} from '../../../app/hooks';
+import { selectCreateTransactionLoading } from '../../../store/transactionsSlice';
+import { ApiTransaction } from '../../../types';
+import { createTransaction } from '../../../store/transactionsThunks';
 import { toast } from 'react-toastify';
-import TransactionForm from '../../components/TransactionForm/TransactionForm';
+import TransactionForm from '../../../components/componentsTransaction/TransactionForm/TransactionForm';
 
 const NewTransaction: React.FC = () => {
     const navigate = useNavigate();

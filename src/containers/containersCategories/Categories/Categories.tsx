@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {selectCategories, selectDeleteCategoryLoading, selectFetchCategoriesLoading} from "../../store/categoriesSlice";
-import Spinner from "../../components/Spinner/Spinner";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
+import {selectCategories, selectDeleteCategoryLoading, selectFetchCategoriesLoading} from "../../../store/categoriesSlice";
+import Spinner from "../../../components/Spinner/Spinner";
 import {toast} from "react-toastify";
-import {deleteCategory, fetchCategories} from "../../store/categoriesThunk";
+import {deleteCategory, fetchCategories} from "../../../store/categoriesThunk";
 import {useEffect} from "react";
-import CategoryItem from "../../components/categoryItem/categoryItem";
+import CategoryItem from "../../../components/compoentsCategory/categoryItem/categoryItem";
 
 
 

@@ -1,10 +1,10 @@
 import {useNavigate} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {selectCreateCategoryLoading} from "../../store/categoriesSlice";
-import {ApiCategory} from "../../types";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
+import {selectCreateCategoryLoading} from "../../../store/categoriesSlice";
+import {ApiCategory} from "../../../types";
 import {toast} from "react-toastify";
-import { createCategory} from "../../store/categoriesThunk";
-import CategoryForm from "../../components/СategoryForm/СategoryForm";
+import { createCategory} from "../../../store/categoriesThunk";
+import CategoryForm from "../../../components/compoentsCategory/СategoryForm/СategoryForm";
 
 const NewCategory = () => {
     const navigate = useNavigate();

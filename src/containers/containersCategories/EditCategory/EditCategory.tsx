@@ -1,16 +1,16 @@
 import {useEffect} from 'react';
-import Spinner from "../../components/Spinner/Spinner";
+import Spinner from "../../../components/Spinner/Spinner";
 import {useNavigate, useParams} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {
     selectFetchOneCategoryLoading,
     selectOneCategory,
     selectUpdateCategoryLoading
-} from "../../store/categoriesSlice";
-import {ApiCategory} from "../../types";
+} from "../../../store/categoriesSlice";
+import {ApiCategory} from "../../../types";
 import {toast} from "react-toastify";
-import {fetchOneCategory, updateCategory} from "../../store/categoriesThunk";
-import CategoryForm from "../../components/СategoryForm/СategoryForm";
+import {fetchOneCategory, updateCategory} from "../../../store/categoriesThunk";
+import CategoryForm from "../../../components/compoentsCategory/СategoryForm/СategoryForm";
 
 const EditCategory = () => {
     const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {ApiCategory, CategoryMutation} from '../../types';
-import ButtonSpinner from "../Spinner/ButtonSpinner";
+import {ApiCategory, CategoryMutation,} from '../../../types';
+import ButtonSpinner from "../../Spinner/ButtonSpinner";
 import {Link} from "react-router-dom";
 
 interface Props {

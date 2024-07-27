@@ -1,13 +1,13 @@
 import {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {useAppDispatch, useAppSelector} from "../../../app/hooks";
 import {
     selectDeleteTransactionLoading,
     selectFetchTransactionsLoading,
     selectTransactions
-} from "../../store/transactionsSlice";
-import Spinner from "../../components/Spinner/Spinner";
-import TransactionItem from "../../components/TransactionItem/TransactionItem";
-import {deleteTransaction, fetchTransactions} from "../../store/transactionsThunks";
+} from "../../../store/transactionsSlice";
+import Spinner from "../../../components/Spinner/Spinner";
+import TransactionItem from "../../../components/componentsTransaction/TransactionItem/TransactionItem";
+import {deleteTransaction, fetchTransactions} from "../../../store/transactionsThunks";
 import {toast} from "react-toastify";
 
 const Transaction = () => {
@@ -33,11 +33,12 @@ const Transaction = () => {
         dispatch(fetchTransactions());
     }, [dispatch]);
 
-    const total=transactions.reduce((sum,ApiTransaction)=> {
-        return sum  + ApiTransaction.amount;
-    },0);
+    const total = transactions.reduce((sum, ApiTransaction) => {
+        return sum + (ApiTransaction.type === 'expense' ? -ApiTransaction.amount : ApiTransaction.amount);
+    }, 0);
 
     const totalClass = total >= 0 ? 'text-success' : 'text-danger';
+
     const sortedTransactions =
         [...transactions].sort((a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
