@@ -2,6 +2,7 @@ import React from 'react';
 import {Transaction} from "../../types";
 import ButtonSpinner from "../Spinner/ButtonSpinner";
 import dayjs from 'dayjs';
+import {Link} from "react-router-dom";
 
 interface Props {
     transaction: Transaction;
@@ -21,6 +22,9 @@ const TransactionItem:React.FC<Props> = ({transaction,onDelete,deleteLoading}) =
                     <span className="card-text small">{transaction.category}</span>
                     <span className="card-text">{transaction.amount} KGS</span>
                     <div className="d-flex gap-2">
+                        <Link className="btn btn-primary" to={`/edit-transaction/${transaction.id}`}>
+                            Edit
+                        </Link>
                         <button
                             className="btn btn-danger"
                             onClick={onDelete}

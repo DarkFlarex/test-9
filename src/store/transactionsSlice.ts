@@ -1,12 +1,21 @@
-import {Transaction} from "../types";
+import {ApiTransaction, Transaction} from "../types";
 import {createSlice} from "@reduxjs/toolkit";
-import {createTransaction, deleteTransaction, fetchTransactions} from "./transactionsThunks";
+import {
+    createTransaction,
+    deleteTransaction,
+    fetchOneTransaction,
+    fetchTransactions,
+    updateTransaction
+} from "./transactionsThunks";
 
 export interface DishesState {
     items:Transaction[];
     fetchLoading: boolean;
     createLoading: boolean;
     deleteLoading: false | string;
+    updateLoading: boolean;
+    fetchOneLoading: boolean;
+    oneTransaction: null | ApiTransaction;
 }
 
 const initialState: DishesState = {
@@ -14,6 +23,9 @@ const initialState: DishesState = {
     fetchLoading: false,
     createLoading: false,
     deleteLoading: false,
+    updateLoading: false,
+    fetchOneLoading: false,
+    oneTransaction: null,
 };
 
 export const transactionsSlice = createSlice({
@@ -54,13 +66,39 @@ export const transactionsSlice = createSlice({
         .addCase(createTransaction.rejected, (state) => {
             state.createLoading = false;
         });
+        builder
+            .addCase(fetchOneTransaction.pending, (state) => {
+                state.oneTransaction = null;
+                state.fetchOneLoading = true;
+            })
+            .addCase(fetchOneTransaction.fulfilled, (state, { payload: apiTransaction }) => {
+                state.oneTransaction = apiTransaction;
+                state.fetchOneLoading = false;
+            })
+            .addCase(fetchOneTransaction.rejected, (state) => {
+                state.fetchOneLoading = false;
+            });
+
+        builder
+            .addCase(updateTransaction.pending, (state) => {
+                state.updateLoading = true;
+            })
+            .addCase(updateTransaction.fulfilled, (state) => {
+                state.updateLoading = false;
+            })
+            .addCase(updateTransaction.rejected, (state) => {
+                state.updateLoading = false;
+            });
     },
         selectors: {
             selectTransactions: (state) => state.items,
             selectFetchTransactionsLoading: (state) => state.fetchLoading,
             selectDeleteTransactionLoading: (state) => state.deleteLoading,
             selectCreateTransactionLoading: (state) => state.createLoading,
-    },
+            selectFetchOneTransactionLoading: (state) => state.fetchOneLoading,
+            selectUpdateTransactionLoading: (state) => state.updateLoading,
+            selectOneTransaction: (state) => state.oneTransaction,
+        },
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
@@ -70,4 +108,7 @@ export const {
     selectFetchTransactionsLoading,
     selectDeleteTransactionLoading,
     selectCreateTransactionLoading,
+    selectFetchOneTransactionLoading,
+    selectUpdateTransactionLoading,
+    selectOneTransaction,
 } = transactionsSlice.selectors;

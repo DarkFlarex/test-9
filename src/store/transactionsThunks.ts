@@ -38,3 +38,30 @@ export const createTransaction = createAsyncThunk<void, ApiTransaction, { state:
         await axiosApi.post('/transaction.json', apiTransaction);
     },
 );
+
+export const fetchOneTransaction = createAsyncThunk<ApiTransaction, string, { state: RootState }>(
+    'transaction/fetchOne',
+    async (id) => {
+        const { data: transaction } = await axiosApi.get<ApiTransaction | null>(
+            `/transaction/${id}.json`,
+        );
+
+        if (transaction === null) {
+            throw new Error('Not found');
+        }
+
+        return transaction;
+    },
+);
+
+export interface UpdateTransactionArg {
+    id: string;
+    apiTransaction: ApiTransaction;
+}
+
+export const updateTransaction = createAsyncThunk<void, UpdateTransactionArg, { state: RootState }>(
+    'transaction/update',
+    async ({ id, apiTransaction }) => {
+        await axiosApi.put(`/transaction/${id}.json`, apiTransaction);
+    },
+);
