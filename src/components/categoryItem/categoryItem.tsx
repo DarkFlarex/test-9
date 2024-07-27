@@ -12,11 +12,13 @@ interface Props {
 
 const TransactionItem:React.FC<Props> = ({category ,onDelete,deleteLoading}) => {
 
+    const typeClass = category.type >= 'income'? 'text-success' : 'text-danger';
+
     return (
         <div className="card mb-2">
             <div className="row g-0">
                 <div className="col-sm-8 ps-2">
-                    <h5 className="card-title">{category.type}</h5>
+                    <h5 className={typeClass}>{category.type}</h5>
                     <span className="card-text small">{category.name}</span>
                     <div className="d-flex gap-2">
                         <Link className="btn btn-primary" to={`/edit-category/${category.id}`}>
