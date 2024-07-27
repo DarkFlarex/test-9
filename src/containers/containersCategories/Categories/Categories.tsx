@@ -7,8 +7,6 @@ import {deleteCategory, fetchCategories} from "../../../store/categoriesThunk";
 import {useEffect} from "react";
 import CategoryItem from "../../../components/compoentsCategory/categoryItem/categoryItem";
 
-
-
 const Categories = () => {
     const dispatch = useAppDispatch();
     const categories = useAppSelector(selectCategories);
@@ -27,9 +25,11 @@ const Categories = () => {
             toast.error('Could not delete Transaction!');
         }
     };
+
     useEffect(() => {
         dispatch(fetchCategories());
     }, [dispatch]);
+
     return (
         <>
             <div className="row col-12 d-flex align-items-center mb-5">
@@ -40,20 +40,20 @@ const Categories = () => {
                     <Link to='/new-categories' className="btn btn-primary">Add new categories</Link>
                 </div>
             </div>
-            {categoriesLoading ? (
-                <Spinner />
-            ) : (
-                categories.map((category) => (
-                    <CategoryItem
-                        key={category.id}
-                        category={category}
-                        onDelete={() => removeCategory(category.id)}
-                        deleteLoading={deleteCategoryLoading}
-                    />
-                ))
-            )}
-
-
+            <div className="cards">
+                {categoriesLoading ? (
+                    <Spinner />
+                ) : (
+                    categories.map((category) => (
+                        <CategoryItem
+                            key={category.id}
+                            category={category}
+                            onDelete={() => removeCategory(category.id)}
+                            deleteLoading={deleteCategoryLoading}
+                        />
+                    ))
+                )}
+            </div>
         </>
     );
 };
