@@ -43,7 +43,7 @@ const Categories = () => {
             <div className="cards">
                 {categoriesLoading ? (
                     <Spinner />
-                ) : (
+                ) : categories.length > 0 ? (
                     categories.map((category) => (
                         <CategoryItem
                             key={category.id}
@@ -52,6 +52,8 @@ const Categories = () => {
                             deleteLoading={deleteCategoryLoading}
                         />
                     ))
+                ) : (
+                    <h5>Категории пусты, заполните их</h5>
                 )}
             </div>
         </>

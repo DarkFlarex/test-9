@@ -61,7 +61,7 @@ const CategoryForm: React.FC<Props> = ({ onSubmit, existingCategory, isLoading }
                 >
                     <option value="">Select type</option>
                     {TypeView.map((Type) => (
-                        <option key={Type.id} value={Type.id}>
+                        <option key={Type.id} value={Type.title}>
                             {Type.title}
                         </option>
                     ))}

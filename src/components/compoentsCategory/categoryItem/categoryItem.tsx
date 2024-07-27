@@ -10,7 +10,7 @@ interface Props {
 }
 
 const TransactionItem:React.FC<Props> = ({category ,onDelete,deleteLoading}) => {
-    const typeClass = category.type >= 'income'? 'text-success' : 'text-danger';
+    const typeClass = category.type >= 'Income'? 'text-success' : 'text-danger';
 
     return (
             <div className="card mb-2">
