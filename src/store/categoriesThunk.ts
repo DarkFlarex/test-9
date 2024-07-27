@@ -42,3 +42,31 @@ export const createCategory = createAsyncThunk<void, ApiCategory, { state: RootS
         await axiosApi.post('/categories.json', apiCategories);
     },
 );
+
+
+export const fetchOneCategory = createAsyncThunk<ApiCategory, string, { state: RootState }>(
+    'categories/fetchOne',
+    async (id) => {
+        const { data: category } = await axiosApi.get<ApiCategory | null>(
+            `/categories/${id}.json`,
+        );
+
+        if (category === null) {
+            throw new Error('Not found');
+        }
+
+        return category;
+    },
+);
+
+export interface UpdateCategoryArg {
+    id: string;
+    apiCategory: ApiCategory;
+}
+
+export const updateCategory = createAsyncThunk<void, UpdateCategoryArg, { state: RootState }>(
+    'categories/update',
+    async ({ id, apiCategory }) => {
+        await axiosApi.put(`/categories/${id}.json`, apiCategory);
+    },
+);

@@ -12,7 +12,7 @@ import {toast} from "react-toastify";
 import Spinner from "../../components/Spinner/Spinner";
 import TransactionForm from "../../components/TransactionForm/TransactionForm";
 
-const EditDTransaction = () => {
+const EditTransaction = () => {
     const navigate = useNavigate();
     const { id } = useParams() as { id: string };
     const dispatch = useAppDispatch();
@@ -50,4 +50,4 @@ const EditDTransaction = () => {
     );
 };
 
-export default EditDTransaction;
+export default EditTransaction;
