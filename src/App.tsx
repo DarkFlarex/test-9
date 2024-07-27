@@ -3,6 +3,7 @@ import './App.css'
 import Toolbar from "./components/Toolbar/Toolbar";
 import {Route, Routes} from "react-router-dom";
 import NewTransaction from "./containers/NewTransaction/NewTransaction";
+import Transaction from "./containers/Transaction/Transaction";
 
 const App=() =>{
 
@@ -15,7 +16,7 @@ const App=() =>{
           <main>
               <Routes>
                   <Route
-                      path='/'
+                      path='/' element={<Transaction/>}
                   />
                   <Route path='/add_transaction' element={<NewTransaction/>}
                   />

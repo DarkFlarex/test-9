@@ -93,17 +93,18 @@ const TransactionForm: React.FC<Props> = ({ onSubmit, existingTransaction, isLoa
                 </select>
             </div>
 
-            <div className="form-group">
+            <div className="form-group mb-3">
                 <label htmlFor="amount">Amount</label>
                 <input
                     type="number"
                     name="amount"
                     required
-                    className="form-control mb-3"
+                    className="form-control"
                     value={transactionMutation.amount}
                     onChange={onFieldChange}
                     placeholder="Amount"
                 />
+                <span> <strong>KGS</strong></span>
             </div>
             <div className="form-group">
                 <Link to={'/'} type="submit" className="btn btn-primary me-5">
